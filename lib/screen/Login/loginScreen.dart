@@ -169,6 +169,52 @@ Widget _buildConten(BuildContext context) {
               ),
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 20,
+            ),
+            child: Center(
+                child: Text(
+              "---------- or ----------",
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF607D8B)),
+            )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 170, right: 48),
+                      child: Container(
+                          width: 24,
+                          height: 24,
+                          child: Image(
+                            image: AssetImage('assets/images/gmail.png'),
+                            fit: BoxFit.contain,
+                          )),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 48),
+                      child: Container(
+                          width: 24,
+                          height: 24,
+                          child: Image(
+                            image: AssetImage('assets/images/instagram.png'),
+                            fit: BoxFit.contain,
+                          )),
+                    ),
+                  ),
+                ]),
+          ),
         ],
       )),
     ),
