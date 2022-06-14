@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:vocabulary/screen/Login/singUpScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ Widget _buildBody(BuildContext context) {
       const Padding(
         padding: EdgeInsets.only(top: 17, left: 400),
       ),
-      Image.asset("assets/images/logo2.png"),
+      Image.asset("assets/images/logo.png"),
       Padding(
         padding: EdgeInsets.only(top: 101),
         child: _buildConten(context),
@@ -158,10 +159,10 @@ Widget _buildConten(BuildContext context) {
                       ),
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const RegisterPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SinUpScreen()));
                     },
                   ),
                 ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vocabulary/screen/Login/loginScreen.dart';
+import 'package:vocabulary/screen/Login/singUpScreen.dart';
+import 'package:vocabulary/screen/Onboarding/onBoarding.dart';
 import 'package:vocabulary/screen/splashScreen.dart';
 
 void main() {
