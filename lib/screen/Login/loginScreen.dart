@@ -21,18 +21,18 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 Widget _buildBody(BuildContext context) {
-  return SingleChildScrollView(
-    child: Column(children: [
-      const Padding(
-        padding: EdgeInsets.only(top: 17, left: 400),
-      ),
-      Image.asset("assets/images/logo.png"),
-      Padding(
-        padding: EdgeInsets.only(top: 101),
-        child: _buildConten(context),
-      )
-    ]),
-  );
+  return Column(
+    children: [
+    const Padding(
+      padding: EdgeInsets.only(top: 17, left: 400),
+    ),
+    const Expanded(child: SizedBox()),
+    Image.asset("assets/images/logo.png"),
+    Padding(
+      padding: EdgeInsets.only(top: 45),
+      child: _buildConten(context),
+    ),
+  ]);
 }
 
 Widget _buildConten(BuildContext context) {
@@ -65,14 +65,15 @@ Widget _buildConten(BuildContext context) {
           Container(
             padding: const EdgeInsets.only(left: 45, right: 30, top: 7),
             child: TextField(
+              obscureText: true,
               controller: emailController,
               decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 hintText: 'Your email',
                 hintStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                     color: Color(0xFfA0A2A3)),
-                // border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
               ),
             ),
           ),
@@ -86,8 +87,10 @@ Widget _buildConten(BuildContext context) {
           Container(
             padding: const EdgeInsets.only(left: 45, right: 30, top: 7),
             child: TextField(
+              obscureText: true,
               controller: passController,
               decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 hintText: 'Password',
                 suffix: Icon(
                   Icons.visibility,
@@ -113,27 +116,25 @@ Widget _buildConten(BuildContext context) {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 45, right: 45, top: 20),
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                width: 500,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Color(0xFF1A1B2F),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: const Center(
-                    child: Text(
-                  "Log in",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFFFFFFFF)),
-                )),
+          const Expanded(child: SizedBox()),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              width: 500,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Color(0xFF1A1B2F),
+                borderRadius: BorderRadius.circular(25),
               ),
+              child: const Center(
+                  child: Text(
+                "Log in",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFFFFFFFF)),
+              )),
             ),
           ),
           Padding(
