@@ -168,6 +168,10 @@ Widget _buildContent(BuildContext context) {
                 // borderRadius: BorderRadius.vertical()
               ),
               hintText: 'Password',
+              suffix: Icon(
+                Icons.visibility,
+                color: Color(0xFF666869),
+              ),
               hintStyle: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

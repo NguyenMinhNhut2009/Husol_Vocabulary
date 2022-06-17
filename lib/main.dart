@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vocabulary/screen/Login/loginScreen.dart';
-import 'package:vocabulary/screen/Login/resetPass.dart';
-import 'package:vocabulary/screen/Login/singUpScreen.dart';
-import 'package:vocabulary/screen/Login/verityCode.dart';
-import 'package:vocabulary/screen/Onboarding/onBoarding.dart';
 import 'package:vocabulary/screen/splashScreen.dart';
 
 void main() {
@@ -17,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ResetPassWordScreen(),
+      home: SplashScreen(),
     );
   }
 }

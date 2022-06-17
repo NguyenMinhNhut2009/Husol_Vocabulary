@@ -17,7 +17,6 @@ class _VeritySCreenState extends State<VerityScreen> {
       backgroundColor: const Color(0xffFFFFFF),
       body: SafeArea(
         child: Container(
-          // padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
           child: Column(
             children: [
               Padding(
