@@ -32,7 +32,7 @@ Widget _buildBody(BuildContext context) {
         ),
       ),
       Image.asset("assets/images/logo.png"),
-      Padding(
+      const Padding(
         padding: EdgeInsets.only(
           right: 189,
           top: 113,
@@ -45,7 +45,7 @@ Widget _buildBody(BuildContext context) {
               fontWeight: FontWeight.w700),
         ),
       ),
-      Padding(
+      const Padding(
         padding: EdgeInsets.only(
           left: 42,
           right: 150,
