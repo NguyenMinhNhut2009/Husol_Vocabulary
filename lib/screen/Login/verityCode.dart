@@ -120,7 +120,7 @@ class _VeritySCreenState extends State<VerityScreen> {
     );
   }
 
-  Widget _textFieldOTP({required bool first, last}) {
+  Widget _textFieldOTP({ required bool first, last}) {
     return Container(
       height: 60,
       child: AspectRatio(

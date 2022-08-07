@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:vocabulary/bloc/login_bloc.dart';
+import 'package:vocabulary/bloc/gg/gg_bloc.dart';
+import 'package:vocabulary/bloc/login/login_bloc.dart';
 import 'package:vocabulary/screen/Home/homeScreen.dart';
 import 'package:vocabulary/screen/Home/main_home.dart';
 import 'package:vocabulary/screen/Login/fogetPassWordScreen.dart';
@@ -16,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late AuthBloc _bloc;
+  GoogleBloc? _googleBloc;
   bool _showPassword = true;
   bool _isVaild = false;
   bool _isEmailValid = false;
@@ -27,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     _bloc = new AuthBloc();
+    _googleBloc = GoogleBloc();
   }
 
   @override
@@ -172,6 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return _showAlert(
                               context, "Login", data.message.toString());
                         } else {
+                          // print("123ok");
                           return Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -253,7 +257,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              _googleBloc.signInction().then((response) {
+                                if (response?.status != "success") {
+                                  return _showAlert(context, "Login",
+                                      response!.message.toString());
+                                } else {
+                                  return Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MainHome()));
+                                }
+                              });
+                            },
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(left: 170, right: 48),

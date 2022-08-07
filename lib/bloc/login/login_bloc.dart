@@ -1,7 +1,9 @@
 import 'dart:async';
 
-import 'package:vocabulary/modules/login_modules.dart';
-import 'package:vocabulary/service/login_service.dart';
+import 'package:vocabulary/modules/login/login_modules.dart';
+import 'package:vocabulary/service/login/login_service.dart';
+
+
 
 class AuthBloc {
   StreamController _emailController=StreamController<String>();
@@ -44,7 +46,7 @@ class AuthBloc {
     var _signInResponse = Login();
     if (params == null) {
       // ignore: prefer_void_to_null
-      _signInResponse.message = 'Vui lòng nhập email và Mật khẩu' as Null;
+      _signInResponse.message = 'Vui lòng nhập email và Mật khẩu';
     }
     _authService!.signInAction(params).then((data) {
       if (data != null) {

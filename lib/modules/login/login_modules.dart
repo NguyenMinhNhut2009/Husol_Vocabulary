@@ -1,6 +1,6 @@
 class Login {
-  Null? html;
-  Null? message;
+  String? html;
+  String? message;
   Result? result;
   String? status;
 
@@ -9,8 +9,7 @@ class Login {
   Login.fromJson(Map<String, dynamic> json) {
     html = json['html'];
     message = json['message'];
-    result =
-        json['result'] != null ? new Result.fromJson(json['result']) : null;
+    result = json['result'] != null ? new Result.fromJson(json['result']) : null;
     status = json['status'];
   }
 
@@ -19,7 +18,7 @@ class Login {
     data['html'] = this.html;
     data['message'] = this.message;
     if (this.result != null) {
-      data['result'] = this.result!.toJson();
+      data['result'] = this.result?.toJson();
     }
     data['status'] = this.status;
     return data;

@@ -1,5 +1,5 @@
 
-import 'package:vocabulary/modules/login_modules.dart';
+import 'package:vocabulary/modules/login/login_modules.dart';
 import 'package:vocabulary/network/api.dart';
 
 class AuthService {

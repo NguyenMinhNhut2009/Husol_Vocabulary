@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "196586455513",
+    "project_id": "vocabulary-7826c",
+    "storage_bucket": "vocabulary-7826c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196586455513:android:ba5f2a95e24aa0a627d9c8",
+        "android_client_info": {
+          "package_name": "com.example.vocabulary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196586455513-41ede84s70pdgftpbnm1pbt0t1djpeah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vocabulary",
+            "certificate_hash": "1a4011afd9b89aec0824c7bfff7031770e93618e"
+          }
+        },
+        {
+          "client_id": "196586455513-8qsvijomcbjkrs4tucjl383s0ln0crvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL4NnsHwiBVYB50pKE1HIT7v4k0ZZ3-As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196586455513-8qsvijomcbjkrs4tucjl383s0ln0crvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
