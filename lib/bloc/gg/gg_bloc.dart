@@ -54,7 +54,7 @@ class GoogleBloc {
 //     }
 //   }
 // }
-Future<Login> signInction() async {
+Future<Login?> signInction() async {
     Completer<Login> c = new Completer();
     var _signInResponse = new Login();
     try {

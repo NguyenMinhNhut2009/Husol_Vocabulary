@@ -258,7 +258,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              _googleBloc.signInction().then((response) {
+                              _googleBloc!.signInction().then((response) {
                                 if (response?.status != "success") {
                                   return _showAlert(context, "Login",
                                       response!.message.toString());
