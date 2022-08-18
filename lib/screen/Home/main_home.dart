@@ -23,9 +23,9 @@ class _MainHomeState extends State<MainHome> with TickerProviderStateMixin {
     ),
     TabMenuItem(
       index: 1,
-      icon: 'assets/icons/Chat.svg',
-      iconHover: 'assets/icons/Chat2.svg',
-      text: 'Chat',
+      icon: 'assets/icons/chart.svg',
+      iconHover: 'assets/icons/chart2.svg',
+      text: 'Chart',
     ),
     TabMenuItem(
       index: 2,

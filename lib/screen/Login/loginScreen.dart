@@ -122,20 +122,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Password',
                         // labelText: '',
                         suffixIcon: GestureDetector(
-                            onTap: () {
+                          onTap: () {
+                            setState(() {
                               setState(() {
-                                setState(() {
-                                  _showPassword = !_showPassword;
-                                });
+                                _showPassword = !_showPassword;
+                                // print("abc");
                               });
-                            },
-                            child: Icon(
-                              _showPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              size: 20,
-                              color: Colors.grey,
-                            )),
+                            });
+                          },
+                          child: Icon(
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       onChanged: (text) {
                         _password = text;
@@ -147,7 +149,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ), // txtPassword(),
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, left: 255),
+                    padding:
+                        const EdgeInsets.only(top: 30, left: 255, bottom: 16),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -204,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // btnLogin(),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 81, right: 81, top: 20),
+                        const EdgeInsets.only(left: 81, right: 81, top: 16),
                     // ignore: avoid_unnecessary_containers
                     child: Container(
                       child: Row(
@@ -240,7 +243,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 20,
+                      top: 10,
+                      bottom: 10,
                     ),
                     child: Center(
                         child: Text(
@@ -251,53 +255,36 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xFF607D8B)),
                     )),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              _googleBloc!.signInction().then((response) {
-                                if (response?.status != "success") {
-                                  return _showAlert(context, "Login",
-                                      response!.message.toString());
-                                } else {
-                                  return Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => MainHome()));
-                                }
-                              });
-                            },
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 170, right: 48),
-                              child: Container(
-                                  width: 24,
-                                  height: 24,
-                                  child: const Image(
-                                    image:
-                                        AssetImage('assets/images/gmail.png'),
-                                    fit: BoxFit.contain,
-                                  )),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 48),
-                              child: Container(
-                                  width: 24,
-                                  height: 24,
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/instagram.png'),
-                                    fit: BoxFit.contain,
-                                  )),
-                            ),
-                          ),
-                        ]),
+                  GestureDetector(
+                    onTap: () {
+                      _googleBloc?.signInction().then((response) {
+                        if (response?.status != "success") {
+                          // print("Failed");
+                        } else {
+                          return Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHome()));
+                        }
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
+                      width: 500,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                          child: Text(
+                        "Log in with Google",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF162447)),
+                      )),
+                    ),
                   ),
                 ],
               )),

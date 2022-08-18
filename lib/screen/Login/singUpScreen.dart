@@ -33,6 +33,7 @@ Widget _buildBody(BuildContext context) {
 }
 
 Widget _buildContent(BuildContext context) {
+  bool _showPassword = true;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -177,32 +178,38 @@ Widget _buildContent(BuildContext context) {
           ),
           flex: 1,
         ),
-        Expanded(
-          child: Container(
-            // width: 280;
-            height: 60,
-            padding: const EdgeInsets.only(left: 45, right: 30, top: 7),
-            child: TextFormField(
-              controller: passWordController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent),
-                  // borderRadius: BorderRadius.vertical()
-                ),
-                hintText: 'Password',
-                suffix: Icon(
-                  Icons.visibility,
-                  color: Color(0xFF666869),
-                ),
-                hintStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFfA0A2A3)),
-                // border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        Container(
+          height: 60,
+          padding: EdgeInsets.only(left: 45, right: 30, top: 7),
+          child: TextFormField(
+            controller: passWordController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.blueAccent),
+                // borderRadius: BorderRadius.vertical()
               ),
+              hintText: 'Your password',
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    setState(() {
+                      _showPassword = !_showPassword;
+                    });
+                  });
+                },
+                child: Icon(
+                  _showPassword ? Icons.visibility : Icons.visibility_off,
+                  size: 20,
+                  color: Colors.grey,
+                ),
+              ),
+              hintStyle: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFfA0A2A3)),
+              // border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
             ),
           ),
-          flex: 3,
         ),
         Expanded(
           child: Padding(
@@ -254,3 +261,5 @@ Widget _buildContent(BuildContext context) {
     ),
   );
 }
+
+void setState(Null Function() param0) {}

@@ -1,6 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vocabulary/screen/Home/add_Topic.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 4, vsync: this);
+    int n = 0;
+    TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       backgroundColor: const Color(0xFFF3F3F4),
       body: Column(children: [
@@ -48,13 +52,84 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             unselectedLabelColor: Color(0xFFFFFFFF),
             isScrollable: true,
             indicatorSize: TabBarIndicatorSize.label,
-            indicatorColor: Color(0xFFFFFFFF),
-            tabs: List.generate(4, (index) => _RappiTabWidget()),
+            indicatorColor: Color(0xFF1A1B2F),
+            tabs: [
+              Text(
+                "My topic",
+                style: TextStyle(
+                    // color: Color(0xFf162447),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+              Text("Share topic",
+                  style: TextStyle(
+                      // color: Color(0xFf162447),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500)),
+            ],
           ),
-          // TabBarView(controller: _tabController,
-          // ),
         ),
       ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: Text('Add Topic'),
+                  content: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Form(
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            decoration: InputDecoration(
+                              
+                              hintText: 'Name topic',
+                              // icon: Icon(Icons.account_box),
+                            ),
+                          ),
+                          // TextFormField(
+                          //   decoration: InputDecoration(
+                          //     labelText: 'Email',
+                          //     icon: Icon(Icons.email),
+                          //   ),
+                          // ),
+                          // TextFormField(
+                          //   decoration: InputDecoration(
+                          //     labelText: 'Message',
+                          //     icon: Icon(Icons.message),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        RaisedButton(
+                            child: Text("Save"),
+                            onPressed: () {
+                              // your code
+                            }),
+                        RaisedButton(
+                            child: Text("No"),
+                            onPressed: () {
+                              // your code
+                            })
+                      ],
+                    ),
+                  ],
+                );
+              });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xff95A3B3),
+      ),
     );
   }
 }
@@ -122,7 +197,7 @@ class _RappiTabWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Card(
-      elevation: 5,
+      // elevation: ,
       child: Text(
         'All topics',
         style: TextStyle(
@@ -134,3 +209,26 @@ class _RappiTabWidget extends StatelessWidget {
     );
   }
 }
+// Future _showAlert(BuildContext context) {
+//   return showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         actions: [
+//           FlatButton(
+//             child: Text('yes'),
+//             onPressed: () {
+//               Navigator.of(context).pop();
+//             },
+//           ),
+//           FlatButton(
+//             child: Text('No'),
+//             onPressed: () {
+//               Navigator.of(context).pop();
+//             },
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }
