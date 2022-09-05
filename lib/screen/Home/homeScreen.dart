@@ -1,9 +1,16 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vocabulary/constants.dart';
+import 'package:vocabulary/network/api.dart';
 import 'package:vocabulary/screen/Home/add_Topic.dart';
+import 'package:vocabulary/service/home/home_Service.dart';
+
+import '../../modules/home/home_Modules.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,9 +20,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late HomeService _homeService;
+  List<Data>? data2;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _homeService = HomeService();
+  }
+
   @override
   Widget build(BuildContext context) {
-    int n = 0;
+    ApiProvider _provider = ApiProvider();
+    Future<String> fetchHomeById() async {
+      final response = await _provider.get("v1/topics?is_shared=0");
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        // print(data);
+        return jsonDecode(response.body.toString());
+      } else {
+        throw Exception('Failed to load post');
+      }
+    }
+
     TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       backgroundColor: const Color(0xFFF3F3F4),
@@ -69,6 +96,82 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ],
           ),
         ),
+        Container(
+            padding: EdgeInsets.all(kDefaultPaddin),
+            height: 180,
+            width: 160,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Container(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: FutureBuilder<String>(
+                      future: fetchHomeById(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.hasData) {
+                          return ListView.builder(
+                              itemCount: snapshot.data?.result?.data?.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Image.network(
+                                        snapshot.data?.result?.data?[index]
+                                                .cover
+                                                .toString() ??
+                                            '',
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        snapshot.data?.result?.data?[index]
+                                                .title
+                                                .toString() ??
+                                            '',
+                                      ),
+                                    ),
+
+                                    // Text(snapshot.),
+                                  ],
+                                );
+                              });
+                        } else {
+                          return Text("Loading");
+                        }
+
+                        // if (snapshot.connectionState ==
+                        //     ConnectionState.waiting) {
+                        //   return Text('Lodaing');
+                        // } else {
+                        //   return ListView.builder(
+                        //       itemCount:
+                        //           snapshot.data?.result?.data?.length ?? 0,
+                        //       itemBuilder: (BuildContext context, int index) {
+                        //         return Card(
+                        //           child: Column(children: [
+                        //             Text(
+                        //               snapshot.data?.result?.data?[index].title
+                        //                       .toString() ??
+                        //                   ' ',
+                        //             ),
+                        //             // print(data.toString());
+                        //           ]),
+                        //         );
+                        //       });
+
+                        //   //   // return snapshot.data?.result?.data;
+                        // }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            )),
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -85,7 +188,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         children: <Widget>[
                           TextFormField(
                             decoration: InputDecoration(
-                              
                               hintText: 'Name topic',
                               // icon: Icon(Icons.account_box),
                             ),
@@ -133,6 +235,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 }
+
+class Int {}
 
 Widget _buildSearch() {
   return Container(
