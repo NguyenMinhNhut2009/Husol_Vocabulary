@@ -172,65 +172,65 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             )),
       ]),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  scrollable: true,
-                  title: Text('Add Topic'),
-                  content: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Form(
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: 'Name topic',
-                              // icon: Icon(Icons.account_box),
-                            ),
-                          ),
-                          // TextFormField(
-                          //   decoration: InputDecoration(
-                          //     labelText: 'Email',
-                          //     icon: Icon(Icons.email),
-                          //   ),
-                          // ),
-                          // TextFormField(
-                          //   decoration: InputDecoration(
-                          //     labelText: 'Message',
-                          //     icon: Icon(Icons.message),
-                          //   ),
-                          // ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  actions: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        RaisedButton(
-                            child: Text("Save"),
-                            onPressed: () {
-                              // your code
-                            }),
-                        RaisedButton(
-                            child: Text("No"),
-                            onPressed: () {
-                              // your code
-                            })
-                      ],
-                    ),
-                  ],
-                );
-              });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Color(0xff95A3B3),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     showDialog(
+      //         context: context,
+      //         builder: (BuildContext context) {
+      //           return AlertDialog(
+      //             scrollable: true,
+      //             title: Text('Add Topic'),
+      //             content: Padding(
+      //               padding: const EdgeInsets.all(8.0),
+      //               child: Form(
+      //                 child: Column(
+      //                   children: <Widget>[
+      //                     TextFormField(
+      //                       decoration: InputDecoration(
+      //                         hintText: 'Name topic',
+      //                         // icon: Icon(Icons.account_box),
+      //                       ),
+      //                     ),
+      //                     // TextFormField(
+      //                     //   decoration: InputDecoration(
+      //                     //     labelText: 'Email',
+      //                     //     icon: Icon(Icons.email),
+      //                     //   ),
+      //                     // ),
+      //                     // TextFormField(
+      //                     //   decoration: InputDecoration(
+      //                     //     labelText: 'Message',
+      //                     //     icon: Icon(Icons.message),
+      //                     //   ),
+      //                     // ),
+      //                   ],
+      //                 ),
+      //               ),
+      //             ),
+      //             actions: [
+      //               Row(
+      //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                 children: [
+      //                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                   RaisedButton(
+      //                       child: Text("Save"),
+      //                       onPressed: () {
+      //                         // your code
+      //                       }),
+      //                   RaisedButton(
+      //                       child: Text("No"),
+      //                       onPressed: () {
+      //                         // your code
+      //                       })
+      //                 ],
+      //               ),
+      //             ],
+      //           );
+      //         });
+      //   },
+      //   child: Icon(Icons.add),
+      //   backgroundColor: Color(0xff95A3B3),
+      // ),
     );
   }
 }
