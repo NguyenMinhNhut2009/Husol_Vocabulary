@@ -21,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late HomeService _homeService;
-  List<Data>? data2;
+  // List<Data>? data2;
   @override
   void initState() {
     // TODO: implement initState
@@ -32,12 +32,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     ApiProvider _provider = ApiProvider();
-    Future<String> fetchHomeById() async {
+    Future<Home> fetchHomeById() async {
       final response = await _provider.get("v1/topics?is_shared=0");
       var data = jsonDecode(response.body.toString());
       if (response.statusCode == 200) {
-        // print(data);
-        return jsonDecode(response.body.toString());
+        print(response);
+        return Home.fromJson(data);
       } else {
         throw Exception('Failed to load post');
       }
@@ -108,9 +108,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Column(
                 children: [
                   Expanded(
-                    child: FutureBuilder<String>(
+                    child: FutureBuilder<Home>(
                       future: fetchHomeById(),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return ListView.builder(
                               itemCount: snapshot.data?.result?.data?.length,
@@ -163,7 +163,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         //           ]),
                         //         );
                         //       });
-
                         //   //   // return snapshot.data?.result?.data;
                         // }
                       },
@@ -236,8 +235,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 }
 
-class Int {}
-
 Widget _buildSearch() {
   return Container(
     width: 380,
@@ -297,22 +294,22 @@ Widget _buildSearch() {
   );
 }
 
-class _RappiTabWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Card(
-      // elevation: ,
-      child: Text(
-        'All topics',
-        style: TextStyle(
-          color: Color(0xFF1A1B2F),
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
-      ),
-    );
-  }
-}
+// class _RappiTabWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Card(
+//       // elevation: ,
+//       child: Text(
+//         'All topics',
+//         style: TextStyle(
+//           color: Color(0xFF1A1B2F),
+//           fontWeight: FontWeight.w700,
+//           fontSize: 20,
+//         ),
+//       ),
+//     );
+//   }
+// }
 // Future _showAlert(BuildContext context) {
 //   return showDialog(
 //     context: context,
